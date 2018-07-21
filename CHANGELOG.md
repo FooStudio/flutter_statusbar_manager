@@ -1,0 +1,9 @@
+## 0.0.1
+* setColor
+* setTranslucent
+* setHidden
+* setStyle
+* setNetworkActivityIndicatorVisible
+* setNavigationBarColor
+* setNavigationBarStyle
+* getHeight
