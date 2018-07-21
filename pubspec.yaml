@@ -1,7 +1,7 @@
 name: flutter_statusbar_manager
 description: Flutter Statusbar Manager
-version: 0.0.1
-author: Ricardo Mendieta<mendieta@foostudio.mx>
+version: 0.0.2
+author: Mendieta <mendieta@foostudio.mx>
 homepage: https://github.com/FooStudio/flutter_statusbar_manager
 
 dependencies:

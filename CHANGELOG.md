@@ -7,3 +7,7 @@
 * setNavigationBarColor
 * setNavigationBarStyle
 * getHeight
+
+## 0.0.2
+* Updated README
+* Added methods documentation
