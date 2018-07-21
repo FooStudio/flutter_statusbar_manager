@@ -6,6 +6,27 @@ This plugin is based on React Native's [StatusBar](https://facebook.github.io/re
 
 The Navigation Bar code was taken from the awesome [flutter-screen-theme-plugin](https://github.com/g123k/flutter-screen-theme-plugin).
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/FooStudio/flutter_statusbar_manager/master/example/assets/android_statusbar.gif" alt="Demo App Android Status Bar" style="margin:auto" width="300" height="533">
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/FooStudio/flutter_statusbar_manager/master/example/assets/android_statusbar_hide.gif" alt="Demo App Android Status Bar hide" style="margin:auto" width="300" height="533">
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/FooStudio/flutter_statusbar_manager/master/example/assets/android_navbar.gif" alt="Demo App Android Nav Bar" style="margin:auto" width="300" height="533">
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/FooStudio/flutter_statusbar_manager/master/example/assets/iphone_8.gif" alt="Demo App Iphone 8" style="margin:auto" width="300" height="533">
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/FooStudio/flutter_statusbar_manager/master/example/assets/iphone_x.gif" alt="Demo App Iphone X" style="margin:auto" width="300" height="650">
+</p>
+
+
 ## Installation
 ```bash
 flutter_statusbar_manager : ^lastest_version

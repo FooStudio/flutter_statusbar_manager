@@ -233,7 +233,7 @@ class _MyAppState extends State<MyApp> {
                   },
                 ),
                 Divider(height: 25.0),
-                renderTitle("Status Bar Loading Indicator:"),
+                renderTitle("Status Bar Activity Indicator:"),
                 SwitchListTile(
                   title: new Text("Indicator:"),
                   value: _loadingIndicator,

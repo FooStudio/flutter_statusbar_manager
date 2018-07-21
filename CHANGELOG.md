@@ -1,3 +1,7 @@
+## 1.0.0
+* Stable release
+* Added examples gifs
+
 ## 0.0.4
 * Added fullscreen mode
 * Updated README
