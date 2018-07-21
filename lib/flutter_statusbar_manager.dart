@@ -66,35 +66,46 @@ class _NavigationBarStyle {
 }
 
 class FlutterStatusbarManager {
-  static const MethodChannel _channel = const MethodChannel('flutter_statusbar_manager');
+  static const MethodChannel _channel =
+      const MethodChannel('flutter_statusbar_manager');
 
   static Future<bool> setColor(Color color, {bool animated = false}) async {
-    return await _channel.invokeMethod("setColor", {'color': color.value, 'animated': animated});
+    return await _channel
+        .invokeMethod("setColor", {'color': color.value, 'animated': animated});
   }
 
   static Future<bool> setTranslucent(bool translucent) async {
-    return await _channel.invokeMethod("setTranslucent", {'translucent': translucent});
+    return await _channel
+        .invokeMethod("setTranslucent", {'translucent': translucent});
   }
 
-  static Future<bool> setHidden(bool hidden, {StatusBarAnimation animation = StatusBarAnimation.NONE}) async {
-    return await _channel
-        .invokeMethod("setHidden", {'hidden': hidden, 'animation': _StatusBarAnimation.getAnimation(animation)});
+  static Future<bool> setHidden(bool hidden,
+      {StatusBarAnimation animation = StatusBarAnimation.NONE}) async {
+    return await _channel.invokeMethod("setHidden", {
+      'hidden': hidden,
+      'animation': _StatusBarAnimation.getAnimation(animation)
+    });
   }
 
   static Future<bool> setStyle(StatusBarStyle style) async {
-    return await _channel.invokeMethod("setStyle", {'style': _StatusBarStyle.getStyle(style)});
+    return await _channel
+        .invokeMethod("setStyle", {'style': _StatusBarStyle.getStyle(style)});
   }
 
   static Future<bool> setNetworkActivityIndicatorVisible(bool visible) async {
-    return await _channel.invokeMethod("setNetworkActivityIndicatorVisible", {'visible': visible});
+    return await _channel.invokeMethod(
+        "setNetworkActivityIndicatorVisible", {'visible': visible});
   }
 
-  static Future<bool> setNavigationBarColor(Color color, {bool animated = false}) async {
-    return await _channel.invokeMethod("setNavigationBarColor", {'color': color.value, 'animated': animated});
+  static Future<bool> setNavigationBarColor(Color color,
+      {bool animated = false}) async {
+    return await _channel.invokeMethod(
+        "setNavigationBarColor", {'color': color.value, 'animated': animated});
   }
 
   static Future<bool> setNavigationBarStyle(NavigationBarStyle style) async {
-    return await _channel.invokeMethod("setNavigationBarStyle", {'style': _NavigationBarStyle.getStyle(style)});
+    return await _channel.invokeMethod("setNavigationBarStyle",
+        {'style': _NavigationBarStyle.getStyle(style)});
   }
 
   static Future<double> get getHeight async {
