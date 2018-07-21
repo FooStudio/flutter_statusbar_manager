@@ -1,3 +1,8 @@
+## 0.0.4
+* Added fullscreen mode
+* Updated README
+* Updated examples
+
 ## 0.0.3
 * Fixed README text errors
 * Updated example

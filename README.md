@@ -144,6 +144,19 @@ The `setNavigationBarStyle` method will set the navigation bar theme.
 await FlutterStatusbarManager.setNavigationBarStyle(NavigationBarStyle.DARK);
 ```
 
+#### setFullscreen
+###### Platforms: Android, iOS
+
+The `setFullscreen` method will set the app in fullscreen mode.
+
+| Parameter|Type|Default| Required | Description |
+| :------------|:---:|:---:|:---:|:-----|
+| fullscreen |`bool`| none | Yes | Whether or not to set the app on fullscreen mode. |
+
+```dart
+await FlutterStatusbarManager.setNavigationBarStyle(NavigationBarStyle.DARK);
+```
+
 ## Enums
 
 #### StatusBarStyle

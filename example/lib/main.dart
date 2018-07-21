@@ -28,6 +28,7 @@ class _MyAppState extends State<MyApp> {
   StatusBarStyle _statusBarStyle = StatusBarStyle.DEFAULT;
   bool _statusBarTranslucent = false;
   bool _loadingIndicator = false;
+  bool _fullscreenMode = false;
 
   bool _navBarColorAnimated = false;
   Color _navBarColor = Colors.black;
@@ -157,7 +158,7 @@ class _MyAppState extends State<MyApp> {
                 Text("Opacity:"),
                 Slider(
                   value: _statusBarOpacity,
-                  min: 0.1,
+                  min: 0.0,
                   max: 1.0,
                   onChanged: (double val) {
                     this.setState(() {
@@ -300,6 +301,18 @@ class _MyAppState extends State<MyApp> {
                     onChanged: navigationBarStyleChanged,
                     dense: true,
                     groupValue: _navBarStyle),
+                Divider(height: 25.0),
+                renderTitle("Fullscreen mode:"),
+                SwitchListTile(
+                  title: new Text("Fullscreen:"),
+                  value: _fullscreenMode,
+                  onChanged: (bool val) {
+                    this.setState(() {
+                      _fullscreenMode = val;
+                    });
+                    FlutterStatusbarManager.setFullscreen(_fullscreenMode);
+                  },
+                ),
               ],
             ),
           ),

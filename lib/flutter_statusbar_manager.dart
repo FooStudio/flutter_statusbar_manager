@@ -111,4 +111,12 @@ class FlutterStatusbarManager {
   static Future<double> get getHeight async {
     return await _channel.invokeMethod("getHeight");
   }
+
+  static setFullscreen(bool value) {
+    if (value) {
+      SystemChrome.setEnabledSystemUIOverlays([]);
+    } else {
+      SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+    }
+  }
 }
