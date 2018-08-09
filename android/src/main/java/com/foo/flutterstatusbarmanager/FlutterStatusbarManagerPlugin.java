@@ -1,6 +1,6 @@
 package com.foo.flutterstatusbarmanager;
 
-import tandroid.animation.ArgbEvaluator;
+import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.annotation.TargetApi;

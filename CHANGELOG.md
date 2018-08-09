@@ -1,3 +1,6 @@
+## 1.0.2
+* Fix android project issues
+
 ## 1.0.1
 * Fix android project issues
 
