@@ -9,9 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowInsets;
 import android.view.WindowManager;
-import android.support.v4.view.ViewCompat;
-
-import java.util.Map;
+import androidx.core.view.ViewCompat;
 
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
