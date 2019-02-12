@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowInsets;
 import android.view.WindowManager;
-import android.support.v4.view.ViewCompat;
+import androidx.core.view.ViewCompat;
 
 import java.util.Map;
 
