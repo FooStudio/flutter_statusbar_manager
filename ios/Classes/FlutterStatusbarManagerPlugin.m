@@ -55,6 +55,12 @@
         statusBarStyle = UIStatusBarStyleDefault;
     } else if ([statusBarStyleString isEqualToString:@"light-content"]) {
         statusBarStyle = UIStatusBarStyleLightContent;
+    } else if ([statusBarStyleString isEqualToString:@"dark-content"]) {
+        if (@available(iOS 13.0, *)) {
+            statusBarStyle = UIStatusBarStyleDarkContent;
+        } else {
+            statusBarStyle = UIStatusBarStyleDefault;
+        }
     } else {
         statusBarStyle = UIStatusBarStyleDefault;
     }
