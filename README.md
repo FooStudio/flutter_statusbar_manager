@@ -1,5 +1,7 @@
 # flutter_statusbar_manager
 
+Now compatible with AndroidX thanks to https://github.com/lorenzOliveto
+
 Flutter Statusbar Manager, lets you control the status bar color, style (theme), visibility, and translucent properties across iOS and Android. With some added bonus for Android to control the Navigation Bar.
 
 This plugin is based on React Native's [StatusBar](https://facebook.github.io/react-native/docs/statusbar) component.

@@ -1,3 +1,8 @@
+## 2.0.0
+* Fix android X
+* Fix iOS Dark mode styles
+* Thanks to https://github.com/lorenzOliveto
+
 ## 1.0.2
 * Fix android project issues
 
