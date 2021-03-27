@@ -19,9 +19,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  double _statusBarHeight = 0.0;
+  double? _statusBarHeight = 0.0;
   bool _statusBarColorAnimated = false;
-  Color _statusBarColor = Colors.black;
+  Color? _statusBarColor = Colors.black;
   double _statusBarOpacity = 1.0;
   bool _statusBarHidden = false;
   StatusBarAnimation _statusBarAnimation = StatusBarAnimation.NONE;
@@ -31,8 +31,8 @@ class _MyAppState extends State<MyApp> {
   bool _fullscreenMode = false;
 
   bool _navBarColorAnimated = false;
-  Color _navBarColor = Colors.black;
-  NavigationBarStyle _navBarStyle = NavigationBarStyle.DEFAULT;
+  Color? _navBarColor = Colors.black;
+  NavigationBarStyle? _navBarStyle = NavigationBarStyle.DEFAULT;
 
   @override
   void initState() {
@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    double statusBarHeight;
+    double? statusBarHeight;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       statusBarHeight = await FlutterStatusbarManager.getHeight;
@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
 
   void updateStatusBar() {
     FlutterStatusbarManager.setColor(
-        _statusBarColor.withOpacity(_statusBarOpacity),
+        _statusBarColor!.withOpacity(_statusBarOpacity),
         animated: _statusBarColorAnimated);
   }
 
@@ -95,7 +95,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   void updateNavBar() {
-    FlutterStatusbarManager.setNavigationBarColor(_navBarColor,
+    FlutterStatusbarManager.setNavigationBarColor(_navBarColor!,
         animated: _navBarColorAnimated);
   }
 
@@ -134,25 +134,25 @@ class _MyAppState extends State<MyApp> {
                 RadioListTile(
                     value: Colors.black,
                     title: Text("Black"),
-                    onChanged: colorBarChanged,
+                    onChanged: (Color? v) => colorBarChanged(v!),
                     dense: true,
                     groupValue: _statusBarColor),
                 RadioListTile(
                     value: Colors.orange,
                     title: Text("Orange"),
-                    onChanged: colorBarChanged,
+                    onChanged: (Color? v) => colorBarChanged(v!),
                     dense: true,
                     groupValue: _statusBarColor),
                 RadioListTile(
                     value: Colors.greenAccent,
                     title: Text("Green"),
-                    onChanged: colorBarChanged,
+                    onChanged: (Color? v) => colorBarChanged(v!),
                     dense: true,
                     groupValue: _statusBarColor),
                 RadioListTile(
                     value: Colors.white30,
                     title: Text("White"),
-                    onChanged: colorBarChanged,
+                    onChanged: (Color? v) => colorBarChanged(v!),
                     dense: true,
                     groupValue: _statusBarColor),
                 Text("Opacity:"),
@@ -184,19 +184,22 @@ class _MyAppState extends State<MyApp> {
                 RadioListTile(
                     value: StatusBarAnimation.NONE,
                     title: Text("NONE"),
-                    onChanged: statusBarAnimationChanged,
+                    onChanged: (StatusBarAnimation? v) =>
+                        statusBarAnimationChanged(v!),
                     dense: true,
                     groupValue: _statusBarAnimation),
                 RadioListTile(
                     value: StatusBarAnimation.FADE,
                     title: Text("FADE"),
-                    onChanged: statusBarAnimationChanged,
+                    onChanged: (StatusBarAnimation? v) =>
+                        statusBarAnimationChanged(v!),
                     dense: true,
                     groupValue: _statusBarAnimation),
                 RadioListTile(
                     value: StatusBarAnimation.SLIDE,
                     title: Text("SLIDE"),
-                    onChanged: statusBarAnimationChanged,
+                    onChanged: (StatusBarAnimation? v) =>
+                        statusBarAnimationChanged(v!),
                     dense: true,
                     groupValue: _statusBarAnimation),
                 Divider(height: 25.0),
@@ -204,19 +207,19 @@ class _MyAppState extends State<MyApp> {
                 RadioListTile(
                     value: StatusBarStyle.DEFAULT,
                     title: Text("DEFAULT"),
-                    onChanged: statusBarStyleChanged,
+                    onChanged: (StatusBarStyle? v) => statusBarStyleChanged(v!),
                     dense: true,
                     groupValue: _statusBarStyle),
                 RadioListTile(
                     value: StatusBarStyle.LIGHT_CONTENT,
                     title: Text("LIGHT_CONTENT"),
-                    onChanged: statusBarStyleChanged,
+                    onChanged: (StatusBarStyle? v) => statusBarStyleChanged(v!),
                     dense: true,
                     groupValue: _statusBarStyle),
                 RadioListTile(
                     value: StatusBarStyle.DARK_CONTENT,
                     title: Text("DARK_CONTENT"),
-                    onChanged: statusBarStyleChanged,
+                    onChanged: (StatusBarStyle? v) => statusBarStyleChanged(v!),
                     dense: true,
                     groupValue: _statusBarStyle),
                 Divider(height: 25.0),
@@ -228,8 +231,8 @@ class _MyAppState extends State<MyApp> {
                     this.setState(() {
                       _statusBarTranslucent = val;
                     });
-                    FlutterStatusbarManager
-                        .setTranslucent(_statusBarTranslucent);
+                    FlutterStatusbarManager.setTranslucent(
+                        _statusBarTranslucent);
                   },
                 ),
                 Divider(height: 25.0),
@@ -241,8 +244,8 @@ class _MyAppState extends State<MyApp> {
                     this.setState(() {
                       _loadingIndicator = val;
                     });
-                    FlutterStatusbarManager
-                        .setNetworkActivityIndicatorVisible(_loadingIndicator);
+                    FlutterStatusbarManager.setNetworkActivityIndicatorVisible(
+                        _loadingIndicator);
                   },
                 ),
                 Divider(height: 25.0),
@@ -260,25 +263,25 @@ class _MyAppState extends State<MyApp> {
                 RadioListTile(
                     value: Colors.black,
                     title: Text("Black"),
-                    onChanged: colorNavBarChanged,
+                    onChanged: (Color? v) => colorNavBarChanged(v!),
                     dense: true,
                     groupValue: _navBarColor),
                 RadioListTile(
                     value: Colors.orange,
                     title: Text("Orange"),
-                    onChanged: colorNavBarChanged,
+                    onChanged: (Color? v) => colorNavBarChanged(v!),
                     dense: true,
                     groupValue: _navBarColor),
                 RadioListTile(
                     value: Colors.greenAccent,
                     title: Text("Green"),
-                    onChanged: colorNavBarChanged,
+                    onChanged: (Color? v) => colorNavBarChanged(v!),
                     dense: true,
                     groupValue: _navBarColor),
                 RadioListTile(
                     value: Colors.white12,
                     title: Text("white"),
-                    onChanged: colorNavBarChanged,
+                    onChanged: (Color? v) => colorNavBarChanged(v!),
                     dense: true,
                     groupValue: _navBarColor),
                 Divider(height: 25.0),
@@ -286,19 +289,22 @@ class _MyAppState extends State<MyApp> {
                 RadioListTile(
                     value: NavigationBarStyle.DEFAULT,
                     title: Text("DEFAULT"),
-                    onChanged: navigationBarStyleChanged,
+                    onChanged: (NavigationBarStyle? v) =>
+                        navigationBarStyleChanged(v!),
                     dense: true,
                     groupValue: _navBarStyle),
                 RadioListTile(
                     value: NavigationBarStyle.LIGHT,
                     title: Text("LIGHT"),
-                    onChanged: navigationBarStyleChanged,
+                    onChanged: (NavigationBarStyle? v) =>
+                        navigationBarStyleChanged(v!),
                     dense: true,
                     groupValue: _navBarStyle),
                 RadioListTile(
                     value: NavigationBarStyle.DARK,
                     title: Text("DARK"),
-                    onChanged: navigationBarStyleChanged,
+                    onChanged: (NavigationBarStyle? v) =>
+                        navigationBarStyleChanged(v!),
                     dense: true,
                     groupValue: _navBarStyle),
                 Divider(height: 25.0),

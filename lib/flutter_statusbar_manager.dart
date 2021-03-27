@@ -9,7 +9,7 @@ class _StatusBarStyle {
   static const String LIGHT_CONTENT = "light-content";
   static const String DARK_CONTENT = "dark-content";
 
-  static String getStyle(StatusBarStyle style) {
+  static String getStyle(StatusBarStyle? style) {
     switch (style) {
       case StatusBarStyle.DEFAULT:
         return DEFAULT;
@@ -30,7 +30,7 @@ class _StatusBarAnimation {
   static const String FADE = "fade";
   static const String SLIDE = "slide";
 
-  static String getAnimation(StatusBarAnimation animation) {
+  static String getAnimation(StatusBarAnimation? animation) {
     switch (animation) {
       case StatusBarAnimation.NONE:
         return NONE;
@@ -51,7 +51,7 @@ class _NavigationBarStyle {
   static const String DARK = "light";
   static const String LIGHT = "dark";
 
-  static String getStyle(NavigationBarStyle style) {
+  static String getStyle(NavigationBarStyle? style) {
     switch (style) {
       case NavigationBarStyle.DEFAULT:
         return DEFAULT;
