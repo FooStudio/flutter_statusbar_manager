@@ -1,3 +1,6 @@
+## 2.1.0
+* Support null-safety
+
 ## 2.0.0
 * Fix android X
 * Fix iOS Dark mode styles

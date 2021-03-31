@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    double statusBarHeight;
+    double? statusBarHeight;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       statusBarHeight = await FlutterStatusbarManager.getHeight;
@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
     if (!mounted) return;
 
     setState(() {
-      _statusBarHeight = statusBarHeight;
+      _statusBarHeight = statusBarHeight!;
     });
   }
 
@@ -61,9 +61,9 @@ class _MyAppState extends State<MyApp> {
     return Text(text, style: textStyle);
   }
 
-  void colorBarChanged(Color val) {
+  void colorBarChanged(Color? val) {
     this.setState(() {
-      _statusBarColor = val;
+      _statusBarColor = val!;
     });
     updateStatusBar();
   }
@@ -74,22 +74,22 @@ class _MyAppState extends State<MyApp> {
         animated: _statusBarColorAnimated);
   }
 
-  void statusBarAnimationChanged(StatusBarAnimation val) {
+  void statusBarAnimationChanged(StatusBarAnimation? val) {
     this.setState(() {
-      _statusBarAnimation = val;
+      _statusBarAnimation = val!;
     });
   }
 
-  void statusBarStyleChanged(StatusBarStyle val) {
+  void statusBarStyleChanged(StatusBarStyle? val) {
     this.setState(() {
-      _statusBarStyle = val;
+      _statusBarStyle = val!;
     });
-    FlutterStatusbarManager.setStyle(val);
+    FlutterStatusbarManager.setStyle(val!);
   }
 
-  void colorNavBarChanged(Color val) {
+  void colorNavBarChanged(Color? val) {
     this.setState(() {
-      _navBarColor = val;
+      _navBarColor = val!;
     });
     updateNavBar();
   }
@@ -99,11 +99,11 @@ class _MyAppState extends State<MyApp> {
         animated: _navBarColorAnimated);
   }
 
-  void navigationBarStyleChanged(NavigationBarStyle val) {
+  void navigationBarStyleChanged(NavigationBarStyle? val) {
     this.setState(() {
-      _navBarStyle = val;
+      _navBarStyle = val!;
     });
-    FlutterStatusbarManager.setNavigationBarStyle(val);
+    FlutterStatusbarManager.setNavigationBarStyle(val!);
   }
 
   @override
