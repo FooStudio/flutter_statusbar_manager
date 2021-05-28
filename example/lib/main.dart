@@ -19,20 +19,20 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  double _statusBarHeight = 0.0;
-  bool _statusBarColorAnimated = false;
-  Color _statusBarColor = Colors.black;
+  double? _statusBarHeight = 0.0;
+  bool? _statusBarColorAnimated = false;
+  Color? _statusBarColor = Colors.black;
   double _statusBarOpacity = 1.0;
   bool _statusBarHidden = false;
-  StatusBarAnimation _statusBarAnimation = StatusBarAnimation.NONE;
-  StatusBarStyle _statusBarStyle = StatusBarStyle.DEFAULT;
+  StatusBarAnimation? _statusBarAnimation = StatusBarAnimation.NONE;
+  StatusBarStyle? _statusBarStyle = StatusBarStyle.DEFAULT;
   bool _statusBarTranslucent = false;
   bool _loadingIndicator = false;
   bool _fullscreenMode = false;
 
   bool _navBarColorAnimated = false;
-  Color _navBarColor = Colors.black;
-  NavigationBarStyle _navBarStyle = NavigationBarStyle.DEFAULT;
+  Color? _navBarColor = Colors.black;
+  NavigationBarStyle? _navBarStyle = NavigationBarStyle.DEFAULT;
 
   @override
   void initState() {
@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    double statusBarHeight;
+    double? statusBarHeight;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       statusBarHeight = await FlutterStatusbarManager.getHeight;
@@ -61,7 +61,7 @@ class _MyAppState extends State<MyApp> {
     return Text(text, style: textStyle);
   }
 
-  void colorBarChanged(Color val) {
+  void colorBarChanged(Color? val) {
     this.setState(() {
       _statusBarColor = val;
     });
@@ -69,25 +69,30 @@ class _MyAppState extends State<MyApp> {
   }
 
   void updateStatusBar() {
+    Color statusBarColor =
+        _statusBarColor == null ? Colors.black : _statusBarColor!;
     FlutterStatusbarManager.setColor(
-        _statusBarColor.withOpacity(_statusBarOpacity),
-        animated: _statusBarColorAnimated);
+        statusBarColor.withOpacity(_statusBarOpacity),
+        animated: _statusBarColorAnimated ?? false);
   }
 
-  void statusBarAnimationChanged(StatusBarAnimation val) {
+  void statusBarAnimationChanged(StatusBarAnimation? val) {
     this.setState(() {
       _statusBarAnimation = val;
     });
   }
 
-  void statusBarStyleChanged(StatusBarStyle val) {
+  void statusBarStyleChanged(StatusBarStyle? val) {
+    if (val == null) {
+      return;
+    }
     this.setState(() {
       _statusBarStyle = val;
     });
     FlutterStatusbarManager.setStyle(val);
   }
 
-  void colorNavBarChanged(Color val) {
+  void colorNavBarChanged(Color? val) {
     this.setState(() {
       _navBarColor = val;
     });
@@ -95,11 +100,14 @@ class _MyAppState extends State<MyApp> {
   }
 
   void updateNavBar() {
-    FlutterStatusbarManager.setNavigationBarColor(_navBarColor,
+    FlutterStatusbarManager.setNavigationBarColor(_navBarColor ?? Colors.black,
         animated: _navBarColorAnimated);
   }
 
-  void navigationBarStyleChanged(NavigationBarStyle val) {
+  void navigationBarStyleChanged(NavigationBarStyle? val) {
+    if (val == null) {
+      return;
+    }
     this.setState(() {
       _navBarStyle = val;
     });
@@ -122,9 +130,9 @@ class _MyAppState extends State<MyApp> {
                 Divider(height: 25.0),
                 renderTitle("Status Bar Color:"),
                 SwitchListTile(
-                  value: _statusBarColorAnimated,
+                  value: _statusBarColorAnimated ?? false,
                   title: new Text("Animated:"),
-                  onChanged: (bool value) {
+                  onChanged: (bool? value) {
                     this.setState(() {
                       _statusBarColorAnimated = value;
                     });
@@ -132,11 +140,12 @@ class _MyAppState extends State<MyApp> {
                 ),
                 Text("Color:"),
                 RadioListTile(
-                    value: Colors.black,
-                    title: Text("Black"),
-                    onChanged: colorBarChanged,
-                    dense: true,
-                    groupValue: _statusBarColor),
+                  value: Colors.black,
+                  title: Text("Black"),
+                  onChanged: colorBarChanged,
+                  dense: true,
+                  groupValue: _statusBarColor,
+                ),
                 RadioListTile(
                     value: Colors.orange,
                     title: Text("Orange"),
@@ -177,7 +186,8 @@ class _MyAppState extends State<MyApp> {
                       _statusBarHidden = val;
                     });
                     FlutterStatusbarManager.setHidden(_statusBarHidden,
-                        animation: _statusBarAnimation);
+                        animation:
+                            _statusBarAnimation ?? StatusBarAnimation.NONE);
                   },
                 ),
                 Text("Animation:"),
@@ -228,8 +238,8 @@ class _MyAppState extends State<MyApp> {
                     this.setState(() {
                       _statusBarTranslucent = val;
                     });
-                    FlutterStatusbarManager
-                        .setTranslucent(_statusBarTranslucent);
+                    FlutterStatusbarManager.setTranslucent(
+                        _statusBarTranslucent);
                   },
                 ),
                 Divider(height: 25.0),
@@ -241,8 +251,8 @@ class _MyAppState extends State<MyApp> {
                     this.setState(() {
                       _loadingIndicator = val;
                     });
-                    FlutterStatusbarManager
-                        .setNetworkActivityIndicatorVisible(_loadingIndicator);
+                    FlutterStatusbarManager.setNetworkActivityIndicatorVisible(
+                        _loadingIndicator);
                   },
                 ),
                 Divider(height: 25.0),
