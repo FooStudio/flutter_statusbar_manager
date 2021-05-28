@@ -69,17 +69,17 @@ class FlutterStatusbarManager {
   static const MethodChannel _channel =
       const MethodChannel('flutter_statusbar_manager');
 
-  static Future<bool> setColor(Color color, {bool animated = false}) async {
+  static Future<bool?> setColor(Color color, {bool animated = false}) async {
     return await _channel
         .invokeMethod("setColor", {'color': color.value, 'animated': animated});
   }
 
-  static Future<bool> setTranslucent(bool translucent) async {
+  static Future<bool?> setTranslucent(bool translucent) async {
     return await _channel
         .invokeMethod("setTranslucent", {'translucent': translucent});
   }
 
-  static Future<bool> setHidden(bool hidden,
+  static Future<bool?> setHidden(bool hidden,
       {StatusBarAnimation animation = StatusBarAnimation.NONE}) async {
     return await _channel.invokeMethod("setHidden", {
       'hidden': hidden,
@@ -87,28 +87,28 @@ class FlutterStatusbarManager {
     });
   }
 
-  static Future<bool> setStyle(StatusBarStyle style) async {
+  static Future<bool?> setStyle(StatusBarStyle style) async {
     return await _channel
         .invokeMethod("setStyle", {'style': _StatusBarStyle.getStyle(style)});
   }
 
-  static Future<bool> setNetworkActivityIndicatorVisible(bool visible) async {
+  static Future<bool?> setNetworkActivityIndicatorVisible(bool visible) async {
     return await _channel.invokeMethod(
         "setNetworkActivityIndicatorVisible", {'visible': visible});
   }
 
-  static Future<bool> setNavigationBarColor(Color color,
+  static Future<bool?> setNavigationBarColor(Color color,
       {bool animated = false}) async {
     return await _channel.invokeMethod(
         "setNavigationBarColor", {'color': color.value, 'animated': animated});
   }
 
-  static Future<bool> setNavigationBarStyle(NavigationBarStyle style) async {
+  static Future<bool?> setNavigationBarStyle(NavigationBarStyle style) async {
     return await _channel.invokeMethod("setNavigationBarStyle",
         {'style': _NavigationBarStyle.getStyle(style)});
   }
 
-  static Future<double> get getHeight async {
+  static Future<double?> get getHeight async {
     return await _channel.invokeMethod("getHeight");
   }
 
