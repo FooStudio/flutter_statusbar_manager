@@ -1,3 +1,11 @@
+## 3.0.1
+* Fix MissingPluginException for flutter web
+* Thanks to https://github.com/rafaelmaeuer
+
+## 3.0.0
+* Added support for null safety
+* Thanks to https://github.com/NarHakobyan
+
 ## 2.0.0
 * Fix android X
 * Fix iOS Dark mode styles
