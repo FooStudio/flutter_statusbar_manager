@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 enum StatusBarStyle { DEFAULT, LIGHT_CONTENT, DARK_CONTENT }
 
@@ -17,8 +18,6 @@ class _StatusBarStyle {
         return DARK_CONTENT;
       case StatusBarStyle.LIGHT_CONTENT:
         return LIGHT_CONTENT;
-      default:
-        return DEFAULT;
     }
   }
 }
@@ -38,8 +37,6 @@ class _StatusBarAnimation {
         return FADE;
       case StatusBarAnimation.SLIDE:
         return SLIDE;
-      default:
-        return NONE;
     }
   }
 }
@@ -59,8 +56,6 @@ class _NavigationBarStyle {
         return DARK;
       case NavigationBarStyle.LIGHT:
         return LIGHT;
-      default:
-        return DEFAULT;
     }
   }
 }
@@ -70,17 +65,20 @@ class FlutterStatusbarManager {
       const MethodChannel('flutter_statusbar_manager');
 
   static Future<bool> setColor(Color color, {bool animated = false}) async {
+    if (kIsWeb) return false;
     return await _channel
         .invokeMethod("setColor", {'color': color.value, 'animated': animated});
   }
 
   static Future<bool> setTranslucent(bool translucent) async {
+    if (kIsWeb) return false;
     return await _channel
         .invokeMethod("setTranslucent", {'translucent': translucent});
   }
 
   static Future<bool> setHidden(bool hidden,
       {StatusBarAnimation animation = StatusBarAnimation.NONE}) async {
+    if (kIsWeb) return false;
     return await _channel.invokeMethod("setHidden", {
       'hidden': hidden,
       'animation': _StatusBarAnimation.getAnimation(animation)
@@ -88,31 +86,37 @@ class FlutterStatusbarManager {
   }
 
   static Future<bool> setStyle(StatusBarStyle style) async {
+    if (kIsWeb) return false;
     return await _channel
         .invokeMethod("setStyle", {'style': _StatusBarStyle.getStyle(style)});
   }
 
   static Future<bool> setNetworkActivityIndicatorVisible(bool visible) async {
+    if (kIsWeb) return false;
     return await _channel.invokeMethod(
         "setNetworkActivityIndicatorVisible", {'visible': visible});
   }
 
   static Future<bool> setNavigationBarColor(Color color,
       {bool animated = false}) async {
+    if (kIsWeb) return false;
     return await _channel.invokeMethod(
         "setNavigationBarColor", {'color': color.value, 'animated': animated});
   }
 
   static Future<bool> setNavigationBarStyle(NavigationBarStyle style) async {
+    if (kIsWeb) return false;
     return await _channel.invokeMethod("setNavigationBarStyle",
         {'style': _NavigationBarStyle.getStyle(style)});
   }
 
   static Future<double> get getHeight async {
+    if (kIsWeb) return 0.0;
     return await _channel.invokeMethod("getHeight");
   }
 
   static setFullscreen(bool value) {
+    if (kIsWeb) return;
     if (value) {
       SystemChrome.setEnabledSystemUIOverlays([]);
     } else {
