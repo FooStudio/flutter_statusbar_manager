@@ -4,13 +4,21 @@ import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.annotation.TargetApi;
+import android.app.ActivityManager;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.os.Build;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowInsets;
 import android.view.WindowManager;
+
+import androidx.annotation.NonNull;
 import androidx.core.view.ViewCompat;
 
+import io.flutter.embedding.engine.plugins.FlutterPlugin;
+import io.flutter.embedding.engine.plugins.activity.ActivityAware;
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -20,20 +28,28 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 /**
  * FlutterStatusbarManagerPlugin
  */
-public class FlutterStatusbarManagerPlugin implements MethodCallHandler {
-    private final Activity activity;
+public class FlutterStatusbarManagerPlugin implements FlutterPlugin, MethodCallHandler, ActivityAware {
+    private Activity activity;
+    private MethodChannel channel;
 
-    /**
-     * Plugin registration.
-     */
-    public static void registerWith(Registrar registrar) {
-        MethodChannel channel = new MethodChannel(registrar.messenger(), "flutter_statusbar_manager");
-        FlutterStatusbarManagerPlugin instance = new FlutterStatusbarManagerPlugin(registrar);
-        channel.setMethodCallHandler(instance);
+    @Override
+    public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
+        channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "plugin_test");
+        channel.setMethodCallHandler(this);
     }
 
-    private FlutterStatusbarManagerPlugin(Registrar registrar) {
-        this.activity = registrar.activity();
+    @Override
+    public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
+        if (call.method.equals("getPlatformVersion")) {
+            result.success("Android " + android.os.Build.VERSION.RELEASE);
+        } else {
+            result.notImplemented();
+        }
+    }
+
+    @Override
+    public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
+        channel.setMethodCallHandler(null);
     }
 
     @Override
